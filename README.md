@@ -1,75 +1,17 @@
-# Nuxt Minimal Starter
+# Cannot find name 'useNuxtDevTools'
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+According to https://devtools.nuxt.com/guide/composables you can use the `useNuxtDevTools` composable which is auto-imported. But I am getting an error that it is not found:
 
-## Setup
+> Cannot find name 'useNuxtDevTools'.ts-plugin (2304)
 
-Make sure to install dependencies:
+This seems to be only a type bug because in runtime it works.
 
-```bash
-# npm
-npm install
+```vue
+<script setup lang="ts">
+    const devtoolsClient = useNuxtDevTools() // Cannot find name 'useNuxtDevTools'.ts-plugin(2304)
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+    const openDevtools = () => {
+        devtoolsClient.value.devtools.toggle() // This works!
+    }
+</script>
 ```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
